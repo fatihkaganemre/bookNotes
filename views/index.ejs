@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Notes</title>
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+        crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="./styles/main.css">    
+</head>
+<body>
+    <section id="header">
+        <div class="container">
+            <div class="px-4 py-5 my-5 text-center">
+                <div class="userIcon mx-auto mb-4", style="background-color: <%=user.color %>;">
+                    <h1><%= `${user.name.charAt(0).toUpperCase()}${user.surname.charAt(0).toUpperCase()}` %></h1>
+                </div>
+                <h1 class="display-5 fw-bold text-body-emphasis"><%= `${user.name} ${user.surname}` %> - Books I’ve read</h1>
+                <div class="col-lg-6 mx-auto">
+                  <p class="lead mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                </div>
+              </div>
+        </div>
+    </section>
+    <hr>
+    <section id="allBooks">
+        <% books.forEach( function(book) { %>
+        <h1>Title: <%= book.title %></h1>
+        <p>Written by: <%= book.author %></p>
+        <% }); %>
+    </section>
+</body>
+</html>

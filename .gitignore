@@ -1,0 +1,11 @@
+## User settings
+xcuserdata/
+**/xcuserdata/*/UserInterfaceState.xcuserstate
+
+## App packaging
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+## Others
+.DS_Store
