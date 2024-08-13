@@ -33,9 +33,9 @@
     <section id="allBooks">
         <div class="container">
             <% books.forEach( function(book) { %>
-                <% if (locals.coverUrls) { %>
-                    <% const index = books.indexOf(book);%>
-                    <img id="coverImage" src=<%= locals.coverUrls[index] %> alt="cover image">
+                <% const data = locals.coverUrls.find(data => data.title === book.title) %>
+                <% if (data) { %>
+                    <img id="coverImage" src=<%=data.url%> alt="cover image">
                 <% } %>
                 <h1><%= book.title %></h6>
                 <h6>Written by: <%= book.author %></h6>

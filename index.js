@@ -35,12 +35,19 @@ app.get("/", async (req, res) => {
         const coverUrls = [];
         for (const book of books) {
             const response = await axios.get(`${API_URL}/search.json?q=${book.title}`);
-            const doc = response.data.docs.find((doc) => doc.author_name[0] == book.author);
-            const id = doc.edition_key[0];
-            console.log(id)
-            const url = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`
-            coverUrls.push(url);
+            const doc = response.data.docs.find(function(doc) {
+                if (doc.author_name) {
+                    return doc.author_name[0].toUpperCase() === book.author.toUpperCase()
+                }
+            });
+
+            if (doc && doc.edition_key) {
+                const id = doc.edition_key[0];
+                const url = `https://covers.openlibrary.org/b/olid/${id}-M.jpg`
+                coverUrls.push( {title: book.title, url: url} );
+            }
         }
+
         res.render("index.ejs", { 
             user: user,
             books: books,
