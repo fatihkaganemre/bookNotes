@@ -9,3 +9,9 @@ xcuserdata/
 
 ## Others
 .DS_Store
+
+# dotenv
+.env
+
+# Dependency directories
+node_modules/
